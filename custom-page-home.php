@@ -69,52 +69,49 @@ get_header();
 
 		<section class="section">
 			<div class="shell">
-				<div class="section-head">
-				<h1 class="section-title">Residential &amp; Commercial <br />
-					Spray Foam insulation</h1>
-				</div>
-				<!-- /.section-head -->
 				
-				<div class="section-body editable" id="untitled-region-1">
-				<p>From saving on heating and cooling costs to adding stability, we're a PA <a href="spray-foam-insulation.php">spray foam insulation contractor</a>&nbsp;that delivers exceptional results. For <a href="residential-spray-foam.php">residential</a>, <a href="commercial-spray-foam.php">commercial</a>, <a href="new-construction-spray-foam.php">new construction</a>, <a href="existing-construction-spray-foam.php">existing construction</a>, or even <a href="historic-renovations-spray-foam.php">historic renovations</a>, our spray foam solutions offer many benefits. Explore our website to learn more about <a href="spray-foam-insulation.php">spray foam insulation</a>, and contact us today to <a href="request-a-quote.php">request a quote</a>.</p>
-				</div>
-				<!-- /.section-body -->
+				<?php the_content();?>
 				
-				<div class="section-actions">
-					<ul class="list-actions text-center section-list">
-						<?php if( $global_phone_number ):?>
+				<?php if( $global_phone_number || $global_request_quote_cta ):?>
+					<div class="section-actions">
+						<ul class="list-actions text-center section-list">
+							<?php if( $global_phone_number ):?>
+								<li>
+									<a href="tel:<?=esc_attr( $global_phone_number );?>">
+										<span class="hidden-xs">Tel: <?=esc_attr( $global_phone_number );?></span>
+										<i class="ico-phone visible-xs-inline-block"></i>
+									</a>
+								</li>
+							<?php endif;?>
+							<?php if( $global_request_quote_cta ):?>
 							<li>
-								<a href="tel:<?=esc_attr( $global_phone_number );?>">
-									<span class="hidden-xs">Tel: <?=esc_attr( $global_phone_number );?></span>
-									<i class="ico-phone visible-xs-inline-block"></i>
-								</a>
+								<?php get_template_part('/template-parts/part', 'request-quote-cta',
+									array(
+										'global_request_quote_cta' => $global_request_quote_cta,
+									) 
+								);?>
 							</li>
-						<?php endif;?>
-						<?php if( $global_request_quote_cta ):?>
-						<li>
-							<?php get_template_part('/template-parts/part', 'request-quote-cta',
-								array(
-									'global_request_quote_cta' => $global_request_quote_cta,
-								) 
-							);?>
-						</li>
-						<?php endif;?>
-					</ul>
-					<!-- /.list-actions -->
-					<?php get_template_part('template-parts/section', 'service-buckets')?>
-					<!-- /.list-services --> 
-
-					<!-- /.main-actions -->
-					<?php get_template_part('template-parts/section', 'main-actions')?>
-					<!-- /.main-services --> 										
-					
-				</div>
-				<!-- /.section-actions --> 
+							<?php endif;?>
+						</ul>
+						
+						<?php get_template_part('template-parts/section', 'service-buckets')?>
+						<!-- /.list-services --> 
+						
+					</div>
+					<!-- /.section-actions --> 
+				<?php endif;?>
 			</div>
 			<!-- /.shell --> 
 		</section>
 		<!-- /.section -->
 
+		<!-- /.main-actions -->
+		<?php get_template_part('template-parts/section', 'main-actions',
+			array(
+				'classes' => '',
+			)
+		)?>
+		
 	</main><!-- #main -->
 
 <?php

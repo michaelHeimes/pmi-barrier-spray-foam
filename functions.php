@@ -50,6 +50,8 @@ function _s_setup() {
 	register_nav_menus(
 		array(
 			'main-nav' => esc_html__( 'Primary', 'pmi-barrier-spray-foam' ),
+			'footer-nav-1' => esc_html__( 'Footer 1', 'pmi-barrier-spray-foam' ),
+			'footer-nav-2' => esc_html__( 'Footer 2', 'pmi-barrier-spray-foam' ),
 		)
 	);
 
